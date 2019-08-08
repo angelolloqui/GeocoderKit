@@ -7,28 +7,71 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import GeocoderKit
 
 class GeocoderKitTests: XCTestCase {
+    private let location = CLLocation(latitude: 40.450942, longitude:-3.691530)
+    private var geocoder: GKGeocoder!
+    private var mockProviders: [MockProvider]!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.mockProviders = [
+            MockProvider(),
+            MockProvider(),
+            MockProvider()
+        ]
+        self.geocoder = GKGeocoder(providers: mockProviders)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testWhenFirstSucceedsThenResultsOK() {
+        let placemarks = [CLPlacemark()]
+        mockProviders[0].mockResult = Result.success(placemarks)
+        let result = waitForResult { geocoder.reverseGeocodeLocation(location, completionHandler: $0) }
+        XCTAssertEqual(placemarks, try? result.get())
+        XCTAssertTrue(mockProviders[0].reverseGecodeCalled)
+        XCTAssertFalse(mockProviders[1].reverseGecodeCalled)
+        XCTAssertFalse(mockProviders[2].reverseGecodeCalled)
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testWhenFirstFailsThenTriesNextResults() {
+        let placemarks = [CLPlacemark()]
+        mockProviders[0].mockResult = Result.failure(NSError(domain: "Error", code: 0, userInfo: [:]))
+        mockProviders[1].mockResult = Result.success(placemarks)
+        let result = waitForResult { geocoder.reverseGeocodeLocation(location, completionHandler: $0) }
+        XCTAssertEqual(placemarks, try? result.get())
+        XCTAssertTrue(mockProviders[0].reverseGecodeCalled)
+        XCTAssertTrue(mockProviders[1].reverseGecodeCalled)
+        XCTAssertFalse(mockProviders[2].reverseGecodeCalled)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testWhenAllFailsThenResultsLastError() {
+        mockProviders[0].mockResult = Result.failure(NSError(domain: "Error 0", code: 0, userInfo: [:]))
+        mockProviders[1].mockResult = Result.failure(NSError(domain: "Error 1", code: 1, userInfo: [:]))
+        mockProviders[2].mockResult = Result.failure(NSError(domain: "Error 2", code: 2, userInfo: [:]))
+        let result = waitForResult { geocoder.reverseGeocodeLocation(location, completionHandler: $0) }
+        do {
+            _ = try result.get()
+            XCTFail("Should not have result")
+        } catch let error {
+            XCTAssertEqual((error as NSError).code, 2)
+        }
+        XCTAssertTrue(mockProviders[0].reverseGecodeCalled)
+        XCTAssertTrue(mockProviders[1].reverseGecodeCalled)
+        XCTAssertTrue(mockProviders[2].reverseGecodeCalled)
+    }
+
+    private class MockProvider: GKGeocoderProvider {
+        var reverseGecodeCalled = false
+        var mockResult: Result<[CLPlacemark], Error>!
+        func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping CLGeocodeCompletionHandler) {
+            reverseGecodeCalled = true
+            do {
+                try completionHandler(mockResult.get(), nil)
+            } catch let error {
+                completionHandler(nil, error)
+            }
         }
     }
-
 }
+

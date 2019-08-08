@@ -10,6 +10,12 @@
 		780B1B8222FC4C2400D65937 /* GeocoderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780B1B7822FC4C2400D65937 /* GeocoderKit.framework */; };
 		780B1B8722FC4C2400D65937 /* GeocoderKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B8622FC4C2400D65937 /* GeocoderKitTests.swift */; };
 		780B1B8922FC4C2400D65937 /* GeocoderKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 780B1B7B22FC4C2400D65937 /* GeocoderKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		780B1B9322FC4C5000D65937 /* GKGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B9222FC4C5000D65937 /* GKGeocoder.swift */; };
+		780B1B9622FC4D5000D65937 /* GKGeocoderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B9522FC4D5000D65937 /* GKGeocoderProvider.swift */; };
+		780B1B9922FC4DA700D65937 /* GKCoreLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B9822FC4DA700D65937 /* GKCoreLocationProvider.swift */; };
+		780B1B9B22FC4EF200D65937 /* GKErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B9A22FC4EF200D65937 /* GKErrors.swift */; };
+		780B1B9D22FC5CB500D65937 /* GKCoreLocationProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B9C22FC5CB500D65937 /* GKCoreLocationProviderTests.swift */; };
+		780B1B9F22FC5D7C00D65937 /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1B9E22FC5D7C00D65937 /* XCTestCase+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,12 @@
 		780B1B8122FC4C2400D65937 /* GeocoderKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeocoderKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		780B1B8622FC4C2400D65937 /* GeocoderKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderKitTests.swift; sourceTree = "<group>"; };
 		780B1B8822FC4C2400D65937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		780B1B9222FC4C5000D65937 /* GKGeocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKGeocoder.swift; sourceTree = "<group>"; };
+		780B1B9522FC4D5000D65937 /* GKGeocoderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKGeocoderProvider.swift; sourceTree = "<group>"; };
+		780B1B9822FC4DA700D65937 /* GKCoreLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKCoreLocationProvider.swift; sourceTree = "<group>"; };
+		780B1B9A22FC4EF200D65937 /* GKErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKErrors.swift; sourceTree = "<group>"; };
+		780B1B9C22FC5CB500D65937 /* GKCoreLocationProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKCoreLocationProviderTests.swift; sourceTree = "<group>"; };
+		780B1B9E22FC5D7C00D65937 /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +83,11 @@
 		780B1B7A22FC4C2400D65937 /* GeocoderKit */ = {
 			isa = PBXGroup;
 			children = (
+				780B1B9722FC4D8E00D65937 /* providers */,
 				780B1B7B22FC4C2400D65937 /* GeocoderKit.h */,
 				780B1B7C22FC4C2400D65937 /* Info.plist */,
+				780B1B9222FC4C5000D65937 /* GKGeocoder.swift */,
+				780B1B9A22FC4EF200D65937 /* GKErrors.swift */,
 			);
 			path = GeocoderKit;
 			sourceTree = "<group>";
@@ -81,9 +96,20 @@
 			isa = PBXGroup;
 			children = (
 				780B1B8622FC4C2400D65937 /* GeocoderKitTests.swift */,
+				780B1B9C22FC5CB500D65937 /* GKCoreLocationProviderTests.swift */,
+				780B1B9E22FC5D7C00D65937 /* XCTestCase+Utils.swift */,
 				780B1B8822FC4C2400D65937 /* Info.plist */,
 			);
 			path = GeocoderKitTests;
+			sourceTree = "<group>";
+		};
+		780B1B9722FC4D8E00D65937 /* providers */ = {
+			isa = PBXGroup;
+			children = (
+				780B1B9522FC4D5000D65937 /* GKGeocoderProvider.swift */,
+				780B1B9822FC4DA700D65937 /* GKCoreLocationProvider.swift */,
+			);
+			path = providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +174,7 @@
 				TargetAttributes = {
 					780B1B7722FC4C2400D65937 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					780B1B8022FC4C2400D65937 = {
 						CreatedOnToolsVersion = 10.3;
@@ -194,6 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780B1B9B22FC4EF200D65937 /* GKErrors.swift in Sources */,
+				780B1B9622FC4D5000D65937 /* GKGeocoderProvider.swift in Sources */,
+				780B1B9322FC4C5000D65937 /* GKGeocoder.swift in Sources */,
+				780B1B9922FC4DA700D65937 /* GKCoreLocationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +232,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780B1B9D22FC5CB500D65937 /* GKCoreLocationProviderTests.swift in Sources */,
+				780B1B9F22FC5D7C00D65937 /* XCTestCase+Utils.swift in Sources */,
 				780B1B8722FC4C2400D65937 /* GeocoderKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +374,7 @@
 		780B1B8D22FC4C2400D65937 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -357,6 +391,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.angelolloqui.GeocoderKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +400,7 @@
 		780B1B8E22FC4C2400D65937 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -389,6 +425,7 @@
 		780B1B9022FC4C2400D65937 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GeocoderKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -406,6 +443,7 @@
 		780B1B9122FC4C2400D65937 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GeocoderKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

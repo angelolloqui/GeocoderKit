@@ -19,8 +19,8 @@ class GooglePlacemark: GKPlacemark {
                 throw GKErrors.invalidData
         }
         self.init()
-        self.location = CLLocation(latitude: lat, longitude: lon)
-        self.name = json["name"] as? String
+        location = CLLocation(latitude: lat, longitude: lon)
+        name = json["name"] as? String
 
         for component in addressComponents {
             guard let types = component["types"] as? [String] else { continue }

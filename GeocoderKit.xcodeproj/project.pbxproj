@@ -23,6 +23,9 @@
 		780B1BB022FDDAD900D65937 /*  CoreLocationPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1BAF22FDDAD900D65937 /*  CoreLocationPlacemark.swift */; };
 		780B1BB423006F1800D65937 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1BB323006F1700D65937 /* MockURLSession.swift */; };
 		780B1BB72300725200D65937 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 780B1BB62300725200D65937 /* assets */; };
+		780B1BBA23007B4200D65937 /* GKHereProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1BB923007B4100D65937 /* GKHereProvider.swift */; };
+		780B1BBC23007BA400D65937 /* HerePlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1BBB23007BA400D65937 /* HerePlacemark.swift */; };
+		780B1BBE23007D6900D65937 /* GKHereProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780B1BBD23007D6900D65937 /* GKHereProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		780B1BAF22FDDAD900D65937 /*  CoreLocationPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " CoreLocationPlacemark.swift"; sourceTree = "<group>"; };
 		780B1BB323006F1700D65937 /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		780B1BB62300725200D65937 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		780B1BB923007B4100D65937 /* GKHereProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKHereProvider.swift; sourceTree = "<group>"; };
+		780B1BBB23007BA400D65937 /* HerePlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerePlacemark.swift; sourceTree = "<group>"; };
+		780B1BBD23007D6900D65937 /* GKHereProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKHereProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +115,10 @@
 		780B1B8522FC4C2400D65937 /* GeocoderKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				780B1BBF23007D7400D65937 /* providers */,
 				780B1BB62300725200D65937 /* assets */,
 				780B1BB323006F1700D65937 /* MockURLSession.swift */,
 				780B1B8622FC4C2400D65937 /* GeocoderKitTests.swift */,
-				780B1B9C22FC5CB500D65937 /* GKCoreLocationProviderTests.swift */,
-				780B1BA222FC68B800D65937 /* GKGoogleProviderTests.swift */,
 				780B1B9E22FC5D7C00D65937 /* XCTestCase+Utils.swift */,
 				780B1B8822FC4C2400D65937 /* Info.plist */,
 			);
@@ -123,8 +128,9 @@
 		780B1B9722FC4D8E00D65937 /* providers */ = {
 			isa = PBXGroup;
 			children = (
-				780B1BA522FC6B8900D65937 /* Google */,
 				780B1BA422FC6B7D00D65937 /* CoreLocation */,
+				780B1BA522FC6B8900D65937 /* Google */,
+				780B1BB823007B1B00D65937 /* Here */,
 			);
 			path = providers;
 			sourceTree = "<group>";
@@ -155,6 +161,25 @@
 				780B1B9522FC4D5000D65937 /* GKGeocoderProvider.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		780B1BB823007B1B00D65937 /* Here */ = {
+			isa = PBXGroup;
+			children = (
+				780B1BBB23007BA400D65937 /* HerePlacemark.swift */,
+				780B1BB923007B4100D65937 /* GKHereProvider.swift */,
+			);
+			path = Here;
+			sourceTree = "<group>";
+		};
+		780B1BBF23007D7400D65937 /* providers */ = {
+			isa = PBXGroup;
+			children = (
+				780B1B9C22FC5CB500D65937 /* GKCoreLocationProviderTests.swift */,
+				780B1BA222FC68B800D65937 /* GKGoogleProviderTests.swift */,
+				780B1BBD23007D6900D65937 /* GKHereProviderTests.swift */,
+			);
+			path = providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +297,8 @@
 				780B1BA722FC6BA300D65937 /* GooglePlacemark.swift in Sources */,
 				780B1BAE22FDD9A800D65937 /* GKPlacemark.swift in Sources */,
 				780B1B9B22FC4EF200D65937 /* GKErrors.swift in Sources */,
+				780B1BBA23007B4200D65937 /* GKHereProvider.swift in Sources */,
+				780B1BBC23007BA400D65937 /* HerePlacemark.swift in Sources */,
 				780B1B9622FC4D5000D65937 /* GKGeocoderProvider.swift in Sources */,
 				780B1B9322FC4C5000D65937 /* GKGeocoder.swift in Sources */,
 				780B1B9922FC4DA700D65937 /* GKCoreLocationProvider.swift in Sources */,
@@ -286,6 +313,7 @@
 				780B1B9F22FC5D7C00D65937 /* XCTestCase+Utils.swift in Sources */,
 				780B1B8722FC4C2400D65937 /* GeocoderKitTests.swift in Sources */,
 				780B1BB423006F1800D65937 /* MockURLSession.swift in Sources */,
+				780B1BBE23007D6900D65937 /* GKHereProviderTests.swift in Sources */,
 				780B1BA322FC68B800D65937 /* GKGoogleProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

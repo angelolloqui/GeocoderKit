@@ -1,8 +1,8 @@
 //
-//  GKGoogleProviderTests.swift
+//  GKHereProviderTests.swift
 //  GeocoderKitTests
 //
-//  Created by Angel Luis Garcia on 08/08/2019.
+//  Created by Angel Luis Garcia on 11/08/2019.
 //  Copyright © 2019 angelolloqui. All rights reserved.
 //
 
@@ -10,19 +10,18 @@ import XCTest
 import CoreLocation
 @testable import GeocoderKit
 
-class GKGoogleProviderTests: XCTestCase {
+class GKHereProviderTests: XCTestCase {
     let location = CLLocation(latitude: 40.450942, longitude:-3.691530)
-    var provider: GKGeocoderProvider.Google!
+    var provider: GKGeocoderProvider.Here!
     var mockURLSession: MockURLSession!
 
     override func setUp() {
         self.mockURLSession = MockURLSession()
-        self.provider = GKGeocoderProvider.Google(apiKey: "notARealSecret",
-                                                  urlSession: mockURLSession)
+        self.provider = GKGeocoderProvider.Here(appId: "notARealSecret", appCode: "notARealSecret", urlSession: mockURLSession)
     }
 
     func testWhenReverseGeocodingThenResultsSuccess() {
-        mockURLSession.mockWith(jsonFile: "google")
+        mockURLSession.mockWith(jsonFile: "here")
 
         let result = waitForResult { provider.reverseGeocodeLocation(location, preferredLocale: Locale(identifier: "es"), completionHandler: $0) }
         let placemark = try? result.get().first
@@ -39,7 +38,7 @@ class GKGoogleProviderTests: XCTestCase {
         XCTAssertEqual(placemark?.thoroughfare, "Paseo de la Castellana")
         XCTAssertEqual(placemark?.subThoroughfare, "93")
         XCTAssertNil(placemark?.region)
-        XCTAssertNil(placemark?.timeZone)
+        XCTAssertEqual(placemark?.timeZone?.secondsFromGMT(), TimeZone(identifier: "Europe/Madrid")?.secondsFromGMT())
     }
 
 }

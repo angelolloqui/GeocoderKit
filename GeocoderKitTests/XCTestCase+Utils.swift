@@ -8,12 +8,12 @@
 
 import Foundation
 import XCTest
-import CoreLocation
+@testable import GeocoderKit
 
 extension XCTestCase {
-    func waitForResult(timeout: TimeInterval = 5.0, _ call: ((@escaping CLGeocodeCompletionHandler) -> Void)) -> Result<[CLPlacemark], Error> {
+    func waitForResult(timeout: TimeInterval = 5.0, _ call: ((@escaping GKGeocodeCompletionHandler) -> Void)) -> Result<[GKPlacemark], Error> {
         let expectation = self.expectation(description: self.name)
-        var result: Result<[CLPlacemark], Error>?
+        var result: Result<[GKPlacemark], Error>?
         call { placemarks, error in
             if let placemarks = placemarks {
                 result = Result.success(placemarks)

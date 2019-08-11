@@ -25,7 +25,7 @@ class GeocoderKitTests: XCTestCase {
     }
 
     func testWhenFirstSucceedsThenResultsOK() {
-        let placemarks = [CLPlacemark()]
+        let placemarks = [GKPlacemark()]
         mockProviders[0].mockResult = Result.success(placemarks)
         let result = waitForResult { geocoder.reverseGeocodeLocation(location, completionHandler: $0) }
         XCTAssertEqual(placemarks, try? result.get())
@@ -35,7 +35,7 @@ class GeocoderKitTests: XCTestCase {
     }
 
     func testWhenFirstFailsThenTriesNextResults() {
-        let placemarks = [CLPlacemark()]
+        let placemarks = [GKPlacemark()]
         mockProviders[0].mockResult = Result.failure(NSError(domain: "Error", code: 0, userInfo: [:]))
         mockProviders[1].mockResult = Result.success(placemarks)
         let result = waitForResult { geocoder.reverseGeocodeLocation(location, completionHandler: $0) }
@@ -63,8 +63,8 @@ class GeocoderKitTests: XCTestCase {
 
     private class MockProvider: GKGeocoderProvider {
         var reverseGecodeCalled = false
-        var mockResult: Result<[CLPlacemark], Error>!
-        func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping CLGeocodeCompletionHandler) {
+        var mockResult: Result<[GKPlacemark], Error>!
+        func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping GKGeocodeCompletionHandler) {
             reverseGecodeCalled = true
             do {
                 try completionHandler(mockResult.get(), nil)

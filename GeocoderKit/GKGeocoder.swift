@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 
+public typealias GKGeocodeCompletionHandler = ([GKPlacemark]?, Error?) -> Void
+
 public class GKGeocoder {
     private let providers: [GKGeocoderProvider]
 
@@ -20,18 +22,18 @@ public class GKGeocoder {
 // MARK: - Public API
 public extension GKGeocoder {
 
-    func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping CLGeocodeCompletionHandler) {
+    func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping GKGeocodeCompletionHandler) {
         reverseGeocodeLocation(providers: providers, location: location, locale: locale, completionHandler: completionHandler)
     }
 
-    func reverseGeocodeLocation(_ location: CLLocation, completionHandler: @escaping CLGeocodeCompletionHandler) {
+    func reverseGeocodeLocation(_ location: CLLocation, completionHandler: @escaping GKGeocodeCompletionHandler) {
         reverseGeocodeLocation(providers: providers, location: location, locale: nil, completionHandler: completionHandler)
     }
 }
 
 // MARK: - Private methods
 private extension GKGeocoder {
-    func reverseGeocodeLocation(providers: [GKGeocoderProvider], location: CLLocation, locale: Locale?, completionHandler: @escaping CLGeocodeCompletionHandler) {
+    func reverseGeocodeLocation(providers: [GKGeocoderProvider], location: CLLocation, locale: Locale?, completionHandler: @escaping GKGeocodeCompletionHandler) {
         guard let provider = providers.first else {
             completionHandler(nil, GKErrors.noGeocoders)
             return

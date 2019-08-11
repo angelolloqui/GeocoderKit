@@ -10,4 +10,6 @@ import Foundation
 
 public enum GKErrors: Error {
     case noGeocoders
+    case invalidData
+    case invalidResponse(data: Data?)
 }

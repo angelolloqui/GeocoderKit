@@ -20,8 +20,10 @@ public class GKGeocoderProviderCoreLocation: GKGeocoderProvider {
         self.geocoder = geocoder
     }
 
-    public func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping CLGeocodeCompletionHandler) {
-        geocoder.reverseGeocodeLocation(location, preferredLocale: locale, completionHandler: completionHandler)
+    public func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping GKGeocodeCompletionHandler) {
+        geocoder.reverseGeocodeLocation(location, preferredLocale: locale) { places, error in
+            completionHandler(places?.compactMap { try? CoreLocationPlacemark(placemark: $0) }, error)
+        }
     }
 
 }

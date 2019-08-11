@@ -10,5 +10,5 @@ import Foundation
 import CoreLocation
 
 public protocol GKGeocoderProvider {
-    func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping CLGeocodeCompletionHandler)
+    func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping GKGeocodeCompletionHandler)
 }

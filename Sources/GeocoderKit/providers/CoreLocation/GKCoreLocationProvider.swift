@@ -21,8 +21,14 @@ public class GKGeocoderProviderCoreLocation: GKGeocoderProvider {
     }
 
     public func reverseGeocodeLocation(_ location: CLLocation, preferredLocale locale: Locale?, completionHandler: @escaping GKGeocodeCompletionHandler) {
-        geocoder.reverseGeocodeLocation(location, preferredLocale: locale) { places, error in
-            completionHandler(places?.compactMap { try? CoreLocationPlacemark(placemark: $0) }, error)
+        if #available(iOS 11.0, *) {
+            geocoder.reverseGeocodeLocation(location, preferredLocale: locale) { places, error in
+                completionHandler(places?.compactMap { try? CoreLocationPlacemark(placemark: $0) }, error)
+            }
+        } else {
+            geocoder.reverseGeocodeLocation(location) { places, error in
+                completionHandler(places?.compactMap { try? CoreLocationPlacemark(placemark: $0) }, error)
+            }
         }
     }
 

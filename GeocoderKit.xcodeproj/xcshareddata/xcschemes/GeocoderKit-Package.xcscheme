@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1030"
+   LastUpgradeVersion = "9999"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "780B1B7722FC4C2400D65937"
+               BlueprintIdentifier = "GeocoderKit::GeocoderKit"
                BuildableName = "GeocoderKit.framework"
                BlueprintName = "GeocoderKit"
                ReferencedContainer = "container:GeocoderKit.xcodeproj">
@@ -32,22 +32,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "780B1B8022FC4C2400D65937"
+               BlueprintIdentifier = "GeocoderKit::GeocoderKitTests"
                BuildableName = "GeocoderKitTests.xctest"
                BlueprintName = "GeocoderKitTests"
                ReferencedContainer = "container:GeocoderKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "780B1B7722FC4C2400D65937"
-            BuildableName = "GeocoderKit.framework"
-            BlueprintName = "GeocoderKit"
-            ReferencedContainer = "container:GeocoderKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,7 +55,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "780B1B7722FC4C2400D65937"
+            BlueprintIdentifier = "GeocoderKit::GeocoderKit"
             BuildableName = "GeocoderKit.framework"
             BlueprintName = "GeocoderKit"
             ReferencedContainer = "container:GeocoderKit.xcodeproj">
@@ -79,15 +70,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "780B1B7722FC4C2400D65937"
-            BuildableName = "GeocoderKit.framework"
-            BlueprintName = "GeocoderKit"
-            ReferencedContainer = "container:GeocoderKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

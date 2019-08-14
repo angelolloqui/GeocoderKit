@@ -25,10 +25,13 @@ class MockURLSession: URLSession {
         return MockURLSessionDataTask(url: url, mockData: mockData, completionHandler: completionHandler)
     }
 
-    private func dataFrom(jsonFile: String) -> Data? {
-        guard  let path = Bundle(for: type(of: self)).path(forResource: "assets/\(jsonFile)", ofType: "json") else {
-            return nil
-        }
+    private func dataFrom(jsonFile: String, testPath: String = #file) -> Data? {
+        let path = URL(fileURLWithPath: testPath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .appendingPathComponent("assets", isDirectory: true)
+            .appendingPathComponent("\(jsonFile).json")
+            .path
         return try? Data(contentsOf: URL(fileURLWithPath: path))
     }
 }

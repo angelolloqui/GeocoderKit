@@ -1,3 +1,9 @@
+![status](https://travis-ci.org/angelolloqui/GeocoderKit.svg?branch=develop)
+![Swift 5.0](https://img.shields.io/badge/swift-5.0-brightgreen.svg)
+![Swift Package Manager](https://img.shields.io/badge/SPM-ready-brightgreen.svg)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?maxAge=2592000)](https://opensource.org/licenses/MIT)
+[![Twitter](https://img.shields.io/badge/twitter-@angelolloqui-blue.svg?maxAge=2592000)](http://twitter.com/angelolloqui)
+
 # GeocoderKit
 
 A drop-in replace for Apple's CLGeocoder class to allow multiple providers and provide failure handling with backup services

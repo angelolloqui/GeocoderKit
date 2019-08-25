@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode10.3
+install:
+- swift package update
+script:
+- swift test --verbose -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios12.1-simulator"

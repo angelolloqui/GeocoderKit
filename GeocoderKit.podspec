@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
   s.version          = '0.0.1'
   s.summary          = "A drop-in replace for Apple's CLGeocoder class to allow multiple providers and provide failure handling with backup services"
   s.description      = <<-DESC
-Apple's geocoder is used extensibly in iOS development. However, when it comes to results, it is not always the most accurate or user friendly geocoder available. On the other hand, there are a pletora of thrid party providers for geocoding services, each offering their own API and model definitions, that despite being similar, are not equal. 
-This library aims for providing a unique interface for any existing service keeping Apple's Core Location model to allow quick integration into existing applications, and at the same time, it offers a fail over mechanism that allows for provider issues: it will always try to resolve the geocoding request with the array of providers given (in sequential order), until one succeeds.
+  Apple's geocoder is used extensibly in iOS development. However, when it comes to results, it is not always the most accurate or user friendly geocoder available. On the other hand, there are a plethora of thrid party providers for geocoding services, each offering their own API and model definitions, that despite being similar, are not equal. 
+  This library aims for providing a unique interface for any existing service keeping Apple's Core Location API and model to allow quick integration into existing applications. Besides, it offers a fail over mechanism that allows for returning results even when the default provider fails: it will always try to resolve the geocoding request with the array of providers given (in sequential order), until one succeeds.
                        DESC
 
   s.homepage         = 'https://github.com/angelolloqui/GeocoderKit'
